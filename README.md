@@ -24,6 +24,13 @@ well-tested.
 - Provide good unit test coverage and all unit tests passing.
 
 ---
+## Design
+
+First of all, it is good to have a visual representation of the sequence of steps and decisions needed to perform the Mars Rover navigation, so here is a Flowchart diagram:
+
+<img src="/docs/MarsRoverFlowchartDiagram.png" width="980">
+
+---
 ## How to run the tests
 - cd to the project root folder in the command line
 - ``mvn test``
