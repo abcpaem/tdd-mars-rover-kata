@@ -7,6 +7,7 @@ public enum Direction {
     WEST('W');
 
     private Character letter;
+    private static final Direction[] values = values();
 
     Direction(char letter) {
         this.letter = letter;
@@ -14,5 +15,9 @@ public enum Direction {
 
     public Character getLetter() {
         return letter;
+    }
+
+    public Direction turnRight() {
+        return values[(this.ordinal() + 1) % values.length];
     }
 }
