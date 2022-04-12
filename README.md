@@ -72,7 +72,13 @@ As per the class diagram above, these are the assumptions and considerations:
 - The *Position* class is a repository to hold the coordinates and direction of a vehicle. This data is kept separated as a different class (and not inside the Vehicle class) because if at some point the position is measured in different terms, this class could become the base of other children classes inheriting common traits, for example, in the case when we need to manage a position in a 3D space.
 - The *Coordinates* class is to simply store the X and Y coordinates for a position. I could have used the Point class in Java, but that would have been like trying to kill a fly with a canyon.
 - *Direction* enumeration is one of the most interesting objects in the diagram, as you can see, the values have been arranged in a way that I can face the correct cardinal direction just by going to the next or previous element, so if I am in NORTH and I turn right (go to next element), I will be facing EAST, but if I turn left from NORTH (go to previous element in a circular way) I will be facing WEST, like in real life!  
-    
+
+## Test Driven Development process
+
+In order to develop the solution I followed this TDD process:
+
+1) Add a test for checking the boundaries of a Rectangular Plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/Test_Results_01-MarsRoverTests_checkRectangularPlateauBoundaries.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/Test_Results_01-MarsRoverTests_checkRectangularPlateauBoundaries.html).
+
 
 ---
 ## How to run the tests
