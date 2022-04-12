@@ -80,6 +80,7 @@ In order to develop the solution I followed this TDD process:
 1) Add a test for checking the boundaries of a Rectangular Plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html).
 2) Add a test for checking Mars Rover location. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html).
 3) Add a test for checking that Mars Rover can turn right. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults03.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults03.html).
+4) Refactor tests to apply DRY principle. All tests keep passing, see tests [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults03.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults03.html).
 
 
 ---
