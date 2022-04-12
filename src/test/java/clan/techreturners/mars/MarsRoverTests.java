@@ -6,7 +6,10 @@ import clan.techreturners.mars.transport.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -97,13 +100,15 @@ public class MarsRoverTests {
         assertEquals(expectedDirection, rover.getDirection());
     }
 
-    @Test
-    void checkRoverMovesForward() {
+    @ParameterizedTest(name = "{index}) When Rover moves {1} {0} time(s) forward, its position will be {2}")
+    @CsvFileSource(resources = "/moveForwardData.csv", numLinesToSkip = 1)
+    void checkRoverMovesForward(int timesMovingForward, Direction direction, String expectedPosition) {
         // Arrange
-        String expectedPosition = "1 3 N";
+        position.setDirection(direction);
+        rover = new Rover(plateau, position);
 
         // Act
-        rover.moveForward();
+        IntStream.range(0, timesMovingForward).forEach(i -> rover.moveForward());
 
         // Assert
         assertEquals(expectedPosition, rover.getPosition().toString());
