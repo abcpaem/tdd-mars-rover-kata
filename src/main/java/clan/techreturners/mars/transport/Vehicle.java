@@ -1,6 +1,7 @@
 package clan.techreturners.mars.transport;
 
 import clan.techreturners.mars.land.PlateauBehaviour;
+import clan.techreturners.mars.location.Coordinate;
 import clan.techreturners.mars.location.Direction;
 import clan.techreturners.mars.location.Position;
 
@@ -12,10 +13,15 @@ public abstract class Vehicle implements VehicleBehaviour {
     public Vehicle(PlateauBehaviour plateau, Position position) {
         this.position = position;
         this.plateau = plateau;
+        plateau.registerVehicle(this);
     }
 
     public Position getPosition() {
         return position;
+    }
+
+    public Coordinate getCoordinate(){
+        return position.getCoordinate();
     }
 
     public Direction getDirection() {

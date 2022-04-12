@@ -113,4 +113,13 @@ public class MarsRoverTests {
         // Assert
         assertEquals(expectedPosition, rover.getPosition().toString());
     }
+
+    @Test
+    void checkIfRoverIsRegisteredInPlateau() {
+        // Act
+        Vehicle registeredRover = plateau.getVehicle(positionCoord);
+
+        // Assert
+        assertEquals(registeredRover, rover);
+    }
 }
