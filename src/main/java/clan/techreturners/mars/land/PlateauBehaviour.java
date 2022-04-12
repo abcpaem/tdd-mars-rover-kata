@@ -7,4 +7,6 @@ public interface PlateauBehaviour {
     Position getForwardPosition(Position position);
     Vehicle getVehicle(Coordinate positionCoord);
     void registerVehicle(Vehicle vehicle);
+    void unregisterVehicle(Vehicle vehicle);
+    boolean isCollision(Coordinate coordinate);
 }

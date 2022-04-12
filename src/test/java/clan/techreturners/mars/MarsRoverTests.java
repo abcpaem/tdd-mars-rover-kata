@@ -14,27 +14,27 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MarsRoverTests {
-    Coordinate edgeCoordinates;
-    Coordinate positionCoord;
-    Direction direction;
-    Plateau plateau;
-    Position position;
+    Coordinate edgeCoord = new Coordinate(5, 5);
+    Plateau plateau = new RectangularPlateau(edgeCoord);
+    Coordinate roverCoord;
+    Position roverPosition;
+    Direction roverDirection;
     Vehicle rover;
+    Coordinate newCoord;
 
     @BeforeEach
     void init() {
-        edgeCoordinates = new Coordinate(5, 5);
-        positionCoord = new Coordinate(1, 2);
-        direction = Direction.NORTH;
-        plateau = new RectangularPlateau(edgeCoordinates);
-        position = new Position(positionCoord, direction);
-        rover = new Rover(plateau, position);
+        roverCoord = new Coordinate(1, 1);
+        roverDirection = Direction.NORTH;
+        roverPosition = new Position(roverCoord, roverDirection);
+        rover = new Rover(plateau, roverPosition);
+        newCoord = new Coordinate(1, 2);
     }
 
     @Test
     void checkRectangularPlateauBoundaries() {
         // Arrange
-        String expectedEdge = String.format("upper-right: %s,%s", edgeCoordinates.getX(), edgeCoordinates.getY());
+        String expectedEdge = String.format("upper-right: %s,%s", edgeCoord.getX(), edgeCoord.getY());
 
         // Act
         String boundaries = plateau.getBoundaries();
@@ -50,7 +50,7 @@ public class MarsRoverTests {
     @Test
     void checkMarsRoverLocation() {
         // Arrange
-        String expectedPosition = String.format("%s %s %s", positionCoord.getX(), positionCoord.getY(), direction.getLetter());
+        String expectedPosition = String.format("%s %s %s", roverCoord.getX(), roverCoord.getY(), roverDirection.getLetter());
 
         // Act
         String location = rover.getLocation();
@@ -71,8 +71,8 @@ public class MarsRoverTests {
             """)
     void checkRoverTurnsRight(Direction direction, Direction expectedDirection) {
         // Arrange
-        position.setDirection(direction);
-        rover = new Rover(plateau, position);
+        Position newPosition = new Position(newCoord, direction);
+        rover = new Rover(plateau, newPosition);
 
         // Act
         rover.turnRight();
@@ -90,8 +90,8 @@ public class MarsRoverTests {
             """)
     void checkRoverTurnsLeft(Direction direction, Direction expectedDirection) {
         // Arrange
-        position.setDirection(direction);
-        rover = new Rover(plateau, position);
+        Position newPosition = new Position(newCoord, direction);
+        rover = new Rover(plateau, newPosition);
 
         // Act
         rover.turnLeft();
@@ -104,8 +104,8 @@ public class MarsRoverTests {
     @CsvFileSource(resources = "/moveForwardData.csv", numLinesToSkip = 1)
     void checkRoverMovesForward(int timesMovingForward, Direction direction, String expectedPosition) {
         // Arrange
-        position.setDirection(direction);
-        rover = new Rover(plateau, position);
+        Position newPosition = new Position(newCoord, direction);
+        rover = new Rover(plateau, newPosition);
 
         // Act
         IntStream.range(0, timesMovingForward).forEach(i -> rover.moveForward());
@@ -117,9 +117,23 @@ public class MarsRoverTests {
     @Test
     void checkIfRoverIsRegisteredInPlateau() {
         // Act
-        Vehicle registeredRover = plateau.getVehicle(positionCoord);
+        Vehicle registeredRover = plateau.getVehicle(roverCoord);
 
         // Assert
         assertEquals(registeredRover, rover);
+    }
+
+    @Test
+    void checkThatNoMoreThanOneRoverCanBeCreatedInSamePlateauAndPosition() {
+        // Arrange
+        String expectedMessage = "already been registered";
+
+        // Act
+        Exception exception = assertThrows(VehicleRegistrationException.class, () -> {
+            new Rover(plateau, roverPosition);
+        });
+
+        // Assert
+        assertTrue(exception.getMessage().contains(expectedMessage));
     }
 }

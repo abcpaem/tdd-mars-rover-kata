@@ -39,8 +39,8 @@ As per the flowchart diagram above, these are the assumptions and considerations
 - After having the plateau edge, the next input must be the position of a Rover in that plateau. Here we need to consider the following:
   - A plateau can have multiple Rovers moving around, but only one will move at a time.
   - We need to keep track of the Rovers in the plateau to avoid collisions.
-  - As no Rover's name is provided by the user, we will consider that any other Rover being already in the plateau at the same given position is the same Rover.
-  - If there is no other Rover in the same given position, then this new Rover will be registered in the plateau.
+  - As no Rover's name is provided by the user, the position identifies a Rover, so it will not be allowed to create more than one Rover in the same plateau and position.
+  - If there is no other Rover in the same given position, then this new Rover will be automatically registered in the plateau at creation time.
 - The third input is about the instructions for moving the Rover, which can be:
   - Turning right (R).
   - Turning left (L).
@@ -86,6 +86,7 @@ In order to develop the solution I followed this TDD process:
 7) Add a test for checking that Mars Rover can move forward. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults07.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults07.html).
 8) Add more tests when Mars Rover moves forward in all directions. See tests [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults08.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults08.html).
 9) Add a test for checking if the Mars Rover is registered automatically in plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults09.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults09.html).
+10) Add a test for checking that no more than one Rover can be created in same plateau and position. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html).
 
 
 ---

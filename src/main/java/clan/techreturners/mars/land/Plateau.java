@@ -26,11 +26,23 @@ public abstract class Plateau implements PlateauBehaviour {
     }
 
     @Override
+    public void unregisterVehicle(Vehicle vehicle) {
+        if (getVehicle(vehicle.getCoordinate()) != null) {
+            vehicles.remove(vehicle);
+        }
+    }
+
+    @Override
     public Vehicle getVehicle(Coordinate coordinate) {
         return vehicles.stream()
                 .filter(x -> x.getCoordinate().equals(coordinate))
                 .findAny()
                 .orElse(null);
+    }
+
+    @Override
+    public boolean isCollision(Coordinate coordinate) {
+        return getVehicle(coordinate) != null;
     }
 
     public String getBoundaries() {
