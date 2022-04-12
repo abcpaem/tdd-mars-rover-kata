@@ -77,7 +77,8 @@ As per the class diagram above, these are the assumptions and considerations:
 
 In order to develop the solution I followed this TDD process:
 
-1) Add a test for checking the boundaries of a Rectangular Plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/Test_Results_01-MarsRoverTests_checkRectangularPlateauBoundaries.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/Test_Results_01-MarsRoverTests_checkRectangularPlateauBoundaries.html).
+1) Add a test for checking the boundaries of a Rectangular Plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html).
+2) Add a test for checking Mars Rover location. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html).
 
 
 ---

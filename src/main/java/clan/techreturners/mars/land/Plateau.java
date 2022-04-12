@@ -2,7 +2,7 @@ package clan.techreturners.mars.land;
 
 import clan.techreturners.mars.location.Coordinate;
 
-public abstract class Plateau {
+public abstract class Plateau implements PlateauBehaviour {
     private final String BOUNDARIES = "I'm a %s with lower-left: %s and upper-right: %s";
     protected Coordinate origin;
     protected Coordinate edge;
