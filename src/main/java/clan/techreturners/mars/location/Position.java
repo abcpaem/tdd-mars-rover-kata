@@ -11,6 +11,10 @@ public class Position {
         this.direction = direction;
     }
 
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
     public Direction getDirection() {
         return direction;
     }

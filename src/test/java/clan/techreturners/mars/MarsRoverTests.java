@@ -96,4 +96,16 @@ public class MarsRoverTests {
         // Assert
         assertEquals(expectedDirection, rover.getDirection());
     }
+
+    @Test
+    void checkRoverMovesForward() {
+        // Arrange
+        String expectedPosition = "1 3 N";
+
+        // Act
+        rover.moveForward();
+
+        // Assert
+        assertEquals(expectedPosition, rover.getPosition().toString());
+    }
 }

@@ -17,4 +17,9 @@ public class Rover extends Vehicle {
     public void turnLeft() {
         this.position.setDirection(position.getDirection().turnLeft());
     }
+
+    @Override
+    public void moveForward() {
+        this.position = plateau.getForwardPosition(this.position);
+    }
 }

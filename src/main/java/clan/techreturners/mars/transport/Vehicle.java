@@ -14,6 +14,10 @@ public abstract class Vehicle implements VehicleBehaviour {
         this.plateau = plateau;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
     public Direction getDirection() {
         return position.getDirection();
     }
