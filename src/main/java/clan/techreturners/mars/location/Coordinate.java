@@ -9,6 +9,11 @@ public class Coordinate {
         this.y = y;
     }
 
+    public Coordinate(Coordinate coordinate) {
+        this.x = coordinate.x;
+        this.y = coordinate.y;
+    }
+
     @Override
     public String toString() {
         return x + "," + y;

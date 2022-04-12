@@ -11,7 +11,7 @@ public class RectangularPlateau extends Plateau {
     public Position getForwardPosition(Position position) {
         int limitX =  edge.getX() + 1;
         int limitY =  edge.getY() + 1;
-        Coordinate coord = position.getCoordinate();
+        Coordinate coord = new Coordinate(position.getCoordinate());
         switch (position.getDirection()) {
             case NORTH -> coord.setY((coord.getY() + 1) % limitY);
             case EAST -> coord.setX((coord.getX() + 1) % limitX);
