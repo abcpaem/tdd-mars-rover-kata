@@ -77,4 +77,23 @@ public class MarsRoverTests {
         // Assert
         assertEquals(expectedDirection, rover.getDirection());
     }
+
+    @ParameterizedTest(name = "{index}) When Rover is facing {0}, after turning left will face {1} ")
+    @CsvSource(delimiterString = "->", textBlock = """
+            NORTH -> WEST
+            WEST  -> SOUTH
+            SOUTH -> EAST
+            EAST  -> NORTH
+            """)
+    void checkRoverTurnsLeft(Direction direction, Direction expectedDirection) {
+        // Arrange
+        position.setDirection(direction);
+        rover = new Rover(plateau, position);
+
+        // Act
+        rover.turnLeft();
+
+        // Assert
+        assertEquals(expectedDirection, rover.getDirection());
+    }
 }

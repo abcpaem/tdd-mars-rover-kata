@@ -12,4 +12,9 @@ public class Rover extends Vehicle {
     public void turnRight() {
         this.position.setDirection(position.getDirection().turnRight());
     }
+
+    @Override
+    public void turnLeft() {
+        this.position.setDirection(position.getDirection().turnLeft());
+    }
 }
