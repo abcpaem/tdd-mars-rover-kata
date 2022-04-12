@@ -5,6 +5,8 @@ import clan.techreturners.mars.location.*;
 import clan.techreturners.mars.transport.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -57,10 +59,17 @@ public class MarsRoverTests {
         );
     }
 
-    @Test
-    void checkRoverTurnsRight() {
+    @ParameterizedTest(name = "{index}) When Rover is facing {0}, after turning right will face {1} ")
+    @CsvSource(delimiterString = "->", textBlock = """
+            NORTH -> EAST
+            EAST  -> SOUTH
+            SOUTH -> WEST
+            WEST  -> NORTH
+            """)
+    void checkRoverTurnsRight(Direction direction, Direction expectedDirection) {
         // Arrange
-        Direction expectedDirection = Direction.EAST;
+        position.setDirection(direction);
+        rover = new Rover(plateau, position);
 
         // Act
         rover.turnRight();
