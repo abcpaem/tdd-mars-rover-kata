@@ -37,6 +37,7 @@ public class MarsRoverTests {
     @Test
     void checkRectangularZoneBoundaries() {
         // Arrange
+        String expectedOrigin = "lower-left: 0,0";
         String expectedEdge = String.format("upper-right: %s,%s", edgeCoord.getX(), edgeCoord.getY());
 
         // Act
@@ -45,7 +46,7 @@ public class MarsRoverTests {
         // Assert
         assertAll(
                 () -> assertTrue(boundaries.contains(RectangularZone.class.getSimpleName())),
-                () -> assertTrue(boundaries.contains("lower-left: 0,0")),
+                () -> assertTrue(boundaries.contains(expectedOrigin)),
                 () -> assertTrue(boundaries.contains(expectedEdge))
         );
     }
@@ -60,7 +61,7 @@ public class MarsRoverTests {
 
         // Assert
         assertAll(
-                () -> assertTrue(location.contains("Rover")),
+                () -> assertTrue(location.contains(Rover.class.getSimpleName())),
                 () -> assertTrue(location.contains(expectedPosition))
         );
     }

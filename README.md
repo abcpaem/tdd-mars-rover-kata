@@ -50,7 +50,7 @@ As per the flowchart diagram above, these are the assumptions and considerations
   - If there is a risk of collision when the Rover is trying to move forward.
   - If there are no more instructions for moving the Rover.
 - As you can see in the diagram above, the program will keep in a loop of moving Rovers until the user decides to stop the navigation.
-- By the way, I could have drawn a UML Activity diagram instead of a Flowchart diagram, but as there is no concurrency in the system and the colourful flowchart diagram is easier to grasp on the eyes of a non-technical stakeholder, that is why.  
+- A flowchart diagram was chosen instead of a UML Activity diagram because there is no concurrency in the system, and the colourful flowchart diagram is easier to grasp on the eyes of a non-technical stakeholder.  
 
 ### Class Diagram
 Now it is time to map out the structure of the Mars Rover navigation system by modeling its classes, attributes, operations and relationships between objects, so here is the Class diagram:
@@ -70,12 +70,13 @@ As per the class diagram above, these are the assumptions and considerations:
   - *VehicleBehaviour*, which exposes the methods needed for a vehicle to move.  
   - *PlateauBehaviour*, which exposes the methods needed to navigate safely within a plateau, and for managing the vehicles moving within.
 - The *Position* class is a repository to hold the coordinates and direction of a vehicle. This data is kept separated as a different class (and not inside the Vehicle class) because if at some point the position is measured in different terms, this class could become the base of other children classes inheriting common traits, for example, in the case when we need to manage a position in a 3D space.
-- The *Coordinates* class is to simply store the X and Y coordinates for a position. I could have used the Point class in Java, but that would have been like trying to kill a fly with a canyon.
-- *Direction* enumeration is one of the most interesting objects in the diagram, as you can see, the values have been arranged in a way that I can face the correct cardinal direction just by going to the next or previous element, so if I am in NORTH and I turn right (go to next element), I will be facing EAST, but if I turn left from NORTH (go to previous element in a circular way) I will be facing WEST, like in real life!  
+- The *Coordinates* class is to simply store the X and Y coordinates for a position. A *Point* class in Java could have been used, but that would have been like trying to kill a fly with a canyon.
+- *Direction* enumeration is one of the most interesting objects in the diagram, as you can see, the values have been arranged in a way that a vehicle can face the correct cardinal direction just by going to the next or previous element, so if it is facing NORTH, and it turns right (go to next element), then it will be facing EAST, but if it turns left from NORTH (go to previous element in a circular way), then it will be facing WEST.
+- By design, it is not possible to manually set the position of a Rover because the position identifies a Rover.
 
 ## Test Driven Development process
 
-In order to develop the solution I followed this TDD process:
+In order to develop the solution, this TDD process was followed:
 
 1) Add a test for checking the boundaries of a Rectangular Plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults01.html).
 2) Add a test for checking Mars Rover location. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults02.html).
@@ -89,6 +90,16 @@ In order to develop the solution I followed this TDD process:
 10) Add a test for checking that no more than one Rover can be created in same plateau and position. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html).
 11) Add a test for checking that Mars Rover keeps last position when there is a risk of collision trying to move forward. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults11.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults11.html).
 12) Add a test for checking that Mars Rover can make multiple moves. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults12.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults12.html).
+
+Finally, you can see all the tests passing [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResultsAll.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResultsAll.html).
+
+### What's next?:
+- Add *main* method to run the solution as a console application.
+- Add tests for edge case scenarios.
+
+#### Improvements
+- Add a unique name to the Vehicle, so it can help as a unique identifier (it wasn't part of original requirements).
+- Add functionality for unregistering Vehicles from Plateau, for cases when the same Rover is transported to a different position by another mean of transport.
 
 
 ---
