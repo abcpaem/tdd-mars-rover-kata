@@ -20,6 +20,9 @@ public class Rover extends Vehicle {
 
     @Override
     public void moveForward() {
-        this.position = plateau.getForwardPosition(this.position);
+        Position newPosition = plateau.getForwardPosition(this.position);
+        if (!plateau.isCollision(newPosition.getCoordinate())) {
+            this.position = newPosition;
+        }
     }
 }

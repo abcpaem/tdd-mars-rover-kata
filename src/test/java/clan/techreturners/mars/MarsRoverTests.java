@@ -24,7 +24,7 @@ public class MarsRoverTests {
 
     @BeforeEach
     void init() {
-        roverCoord = new Coordinate(1, 1);
+        roverCoord = new Coordinate(2, 3);
         roverDirection = Direction.NORTH;
         roverPosition = new Position(roverCoord, roverDirection);
         rover = new Rover(plateau, roverPosition);
@@ -135,5 +135,20 @@ public class MarsRoverTests {
 
         // Assert
         assertTrue(exception.getMessage().contains(expectedMessage));
+    }
+
+    @Test
+    void checkThatRoverKeepsLastPositionWhenThereIsARiskOfCollision() {
+        // Arrange
+        Position newPosition = new Position(newCoord, Direction.EAST);
+        Rover newRover = new Rover(plateau, newPosition);
+
+        // Act
+        newRover.moveForward();
+        newRover.turnLeft();
+        newRover.moveForward(); // Here there is a collision with the rover at 2 3 N
+
+        // Assert
+        assertEquals("2 2 N", newRover.getPosition().toString());
     }
 }

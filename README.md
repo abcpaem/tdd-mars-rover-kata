@@ -45,9 +45,9 @@ As per the flowchart diagram above, these are the assumptions and considerations
   - Turning right (R).
   - Turning left (L).
   - Moving forward (M).
-- In the following 3 cases we will stop moving the Rover and await for some input from the user, which can be another Rover's Position or program termination:
+- In the following 3 cases the Rover will stop moving and await for some input from the user, which can be another Rover's Position or program termination:
   - If the moving instruction is not recognised.
-  - If there is a risk of collision when the Rover is moving. If this case then the Rover will be moved back to its previous position.
+  - If there is a risk of collision when the Rover is trying to move forward.
   - If there are no more instructions for moving the Rover.
 - As you can see in the diagram above, the program will keep in a loop of moving Rovers until the user decides to stop the navigation.
 - By the way, I could have drawn a UML Activity diagram instead of a Flowchart diagram, but as there is no concurrency in the system and the colourful flowchart diagram is easier to grasp on the eyes of a non-technical stakeholder, that is why.  
@@ -87,6 +87,7 @@ In order to develop the solution I followed this TDD process:
 8) Add more tests when Mars Rover moves forward in all directions. See tests [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults08.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults08.html).
 9) Add a test for checking if the Mars Rover is registered automatically in plateau. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults09.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults09.html).
 10) Add a test for checking that no more than one Rover can be created in same plateau and position. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults10.html).
+11) Add a test for checking that Rover keeps last position when there is a risk of collision trying to move forward. See test [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults11.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResults11.html).
 
 
 ---
