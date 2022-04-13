@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MarsRoverTests {
     Coordinate edgeCoord = new Coordinate(5, 5);
-    Plateau plateau = new RectangularPlateau(edgeCoord);
+    Plateau plateau = new RectangularZone(edgeCoord);
     Coordinate roverCoord;
     Position roverPosition;
     Direction roverDirection;
@@ -35,7 +35,7 @@ public class MarsRoverTests {
     }
 
     @Test
-    void checkRectangularPlateauBoundaries() {
+    void checkRectangularZoneBoundaries() {
         // Arrange
         String expectedEdge = String.format("upper-right: %s,%s", edgeCoord.getX(), edgeCoord.getY());
 
@@ -44,7 +44,7 @@ public class MarsRoverTests {
 
         // Assert
         assertAll(
-                () -> assertTrue(boundaries.contains("RectangularPlateau")),
+                () -> assertTrue(boundaries.contains(RectangularZone.class.getSimpleName())),
                 () -> assertTrue(boundaries.contains("lower-left: 0,0")),
                 () -> assertTrue(boundaries.contains(expectedEdge))
         );
@@ -160,7 +160,7 @@ public class MarsRoverTests {
     @MethodSource
     void checkThatRoverCanMakeMultipleMoves(Position position, String instructions, String expectedPosition) {
         // Arrange
-        Plateau newPlateau = new RectangularPlateau(new Coordinate(5, 5));
+        Plateau newPlateau = new RectangularZone(new Coordinate(5, 5));
         Vehicle newRover = new Rover(newPlateau, position);
 
         // Act

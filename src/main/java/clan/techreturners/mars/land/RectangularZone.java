@@ -2,8 +2,8 @@ package clan.techreturners.mars.land;
 
 import clan.techreturners.mars.location.*;
 
-public class RectangularPlateau extends Plateau {
-    public RectangularPlateau(Coordinate edgeCoordinates) {
+public class RectangularZone extends Plateau {
+    public RectangularZone(Coordinate edgeCoordinates) {
         super(edgeCoordinates);
     }
 
