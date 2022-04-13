@@ -26,13 +26,6 @@ public abstract class Plateau implements PlateauBehaviour {
     }
 
     @Override
-    public void unregisterVehicle(Vehicle vehicle) {
-        if (getVehicle(vehicle.getCoordinate()) != null) {
-            vehicles.remove(vehicle);
-        }
-    }
-
-    @Override
     public Vehicle getVehicle(Coordinate coordinate) {
         return vehicles.stream()
                 .filter(x -> x.getCoordinate().equals(coordinate))
