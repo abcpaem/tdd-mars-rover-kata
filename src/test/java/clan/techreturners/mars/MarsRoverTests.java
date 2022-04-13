@@ -6,10 +6,13 @@ import clan.techreturners.mars.transport.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -142,6 +145,7 @@ public class MarsRoverTests {
         // Arrange
         Position newPosition = new Position(newCoord, Direction.EAST);
         Rover newRover = new Rover(plateau, newPosition);
+        String expectedPosition = "2 2 N";
 
         // Act
         newRover.moveForward();
@@ -149,6 +153,27 @@ public class MarsRoverTests {
         newRover.moveForward(); // Here there is a collision with the rover at 2 3 N
 
         // Assert
-        assertEquals("2 2 N", newRover.getPosition().toString());
+        assertEquals(expectedPosition, newRover.getPosition().toString());
+    }
+
+    @ParameterizedTest(name = "{index}) A Rover at {0} moving {1} will end up being at {2}")
+    @MethodSource
+    void checkThatRoverCanMakeMultipleMoves(Position position, String instructions, String expectedPosition) {
+        // Arrange
+        Plateau newPlateau = new RectangularPlateau(new Coordinate(5, 5));
+        Vehicle newRover = new Rover(newPlateau, position);
+
+        // Act
+        newRover.move(instructions);
+
+        // Assert
+        assertEquals(expectedPosition, newRover.getPosition().toString());
+    }
+
+    private static Stream<Arguments> checkThatRoverCanMakeMultipleMoves() {
+        return Stream.of(
+                Arguments.of(new Position(new Coordinate(1, 2), Direction.NORTH), "LMLMLMLMM", "1 3 N"),
+                Arguments.of(new Position(new Coordinate(3, 3), Direction.EAST), "MMRMMRMRRM", "5 1 E")
+        );
     }
 }

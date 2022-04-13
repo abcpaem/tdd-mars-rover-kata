@@ -25,4 +25,16 @@ public class Rover extends Vehicle {
             this.position = newPosition;
         }
     }
+
+    @Override
+    public void move(String instructions) {
+        char[] moves = instructions.toUpperCase().toCharArray();
+        for (Character move : moves) {
+            switch (move) {
+                case 'L' -> this.turnLeft();
+                case 'R' -> this.turnRight();
+                case 'M' -> this.moveForward();
+            }
+        }
+    }
 }
