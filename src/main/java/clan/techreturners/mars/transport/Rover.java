@@ -19,22 +19,27 @@ public class Rover extends Vehicle {
     }
 
     @Override
-    public void moveForward() {
+    public String moveForward() {
         Position newPosition = plateau.getForwardPosition(this.position);
         if (!plateau.isCollision(newPosition.getCoordinate())) {
             this.position = newPosition;
+            return "";
         }
+        return this.getCollisionMessage(newPosition);
     }
 
     @Override
-    public void move(String instructions) {
+    public String move(String instructions) {
         char[] moves = instructions.toUpperCase().toCharArray();
+        String collisionMsg = "";
         for (Character move : moves) {
             switch (move) {
                 case 'L' -> this.turnLeft();
                 case 'R' -> this.turnRight();
-                case 'M' -> this.moveForward();
+                case 'M' -> collisionMsg = this.moveForward();
             }
+            if (!collisionMsg.isEmpty()) return collisionMsg;
         }
+        return "";
     }
 }

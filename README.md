@@ -94,17 +94,21 @@ In order to develop the solution, this TDD process was followed:
 Finally, you can see all the tests passing [here](https://htmlpreview.github.io/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResultsAll.html) or [here](https://htmlview.glitch.me/?https://github.com/abcpaem/tdd-mars-rover-kata/blob/main/docs/TestResultsAll.html).
 
 ### What's next?:
-- Add *main* method to run the solution as a console application.
+- Add regex validations to console user input.
 - Add tests for edge case scenarios.
 
-#### Improvements
+#### Potential improvements:
 - Add a unique name to the Vehicle, so it can help as a unique identifier (it wasn't part of original requirements).
 - Add functionality for unregistering Vehicles from Plateau, for cases when the same Rover is transported to a different position by another mean of transport.
 
 
 ---
-## How to run the tests
-- cd to the project root folder in the command line
+### How to run the application
+1) cd to the project root folder in the command line
+2) `mvn compile`
+3) `mvn exec:java -Dexec.mainClass=clan.techreturners.mars.Main`
+
+To run tests use:
 - ``mvn test``
 
 ## Technology
